@@ -1,20 +1,25 @@
+import {FaBars} from "react-icons/fa"
 import logo from "../assets/images/logo.png";
 function Nav() {
   return (
-    <div className="container mx-auto  flex justify-between items-center capitalize">
-      <div>
-        <ul className="flex justify-between gap-10 items-center  text-lg py-4">
+    <div  className="container mx-auto  flex justify-between items-center capitalize">
+      <div className="">
+        <ul className=" flex justify-between gap-10 items-center cursor-pointer  text-lg py-4">
           <li><img className="w-40" src={logo} /></li>
 
           <li className="hidden md:block">Home</li>
 
           <li className="hidden md:block ">About us</li>
 
-          <li className="hidden md:block ">ADD</li>
+          <select className="hidden md:block outline-none ">
+            <option value="" selected disabled>ADD</option>
+            <option value="">SCHOLARSHIP_POST</option>
+            <option value="">ADD-STUDENT</option>
+          </select>
         </ul>
       </div>
       <div>
-        <ul className="flex justify-between gap-10 items-center  text-lg py-4">
+        <ul className="flex justify-between cursor-pointer gap-10 items-center  text-lg py-4">
           <li>sign up</li>
 
           <li>
@@ -23,9 +28,9 @@ function Nav() {
             </button>
           </li>
 
-          {/* <li className="block md:hidden ">
+          <li className="block md:hidden ">
             <FaBars size={25} />
-          </li> */}
+          </li>
         </ul>
       </div>
     </div>
