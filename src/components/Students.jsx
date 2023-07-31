@@ -8,22 +8,18 @@ function Students() {
       {studentPortal.map((item) => {
         if (item.featured) {
           return (
-            <div>
-              <div className="h-[300px] w-[300px] bg-[#3871C1] relative ">
+            <div className="border-2 border-gray-200 mx-5 shadow-2xl">
+              <div className="h-[300px] w-[300px]  bg-[#3871C1] relative ">
                 <img
                   className="object-contain h-[100%] w-[100%] "
                   src={`/src/assets/images/${item.studentImage}`}
                 />
-                <button className="  bg-[#3871C1] py-4 px-12  w-[100%]  rounded-md absolute bottom-0 left-0 text-[#fff]">
-                  select
-                </button>
+                
               </div>
               <div className=" flex justify-between items-center">
                 <div className="text-center mx-auto">
-                  <p>{item.studentName}</p>
-                  <p>{item.studentClass}</p>
-                  <p>{item.studentSchool}</p>
-                  <p>{item.studentEducation}</p>
+                  <p className="text-[#3871C1]">{item.studentName}</p>
+                  <p>{item.studentDescription}</p>
                 </div>
               </div>
             </div>
