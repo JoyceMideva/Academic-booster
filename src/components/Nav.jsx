@@ -10,7 +10,7 @@ function Nav() {
 
       <Link to="/">   <li className="hidden md:block">Home</li></Link>
 
-         <li className="hidden md:block">About us</li>
+         <Link to="/aboutus"><li className="hidden md:block">About us</li></Link>
         
       <Link to="/post">      <option value="">SCHOLARSHIP_POST</option></Link>
       {/* <Link to="/add">  <option value="">ADD-STUDENT</option></Link> */}
@@ -18,13 +18,13 @@ function Nav() {
       </div>
       <div>
         <ul className="flex justify-between cursor-pointer gap-10 items-center  text-lg py-4">
-        <li>sign up</li>
+       <Link to="/signup"> <li>sign up</li></Link>
 
-        <li>
+       <Link to="/login"><li>
             <button className="border-2  border-black  py-2 px-6  rounded-full">
               Log in
             </button>
-          </li>
+          </li></Link>
 
           <li className="block md:hidden ">
             <FaBars size={25} />
