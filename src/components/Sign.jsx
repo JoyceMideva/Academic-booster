@@ -1,5 +1,3 @@
-import { BsFillEyeSlashFill } from "react-icons/bs";
-import { LiaEyeSolid } from "react-icons/lia";
 import google from "../assets/images/google.png";
 import signup from "../assets/images/login.jpeg";
 import { useState } from "react";
