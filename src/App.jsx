@@ -4,8 +4,8 @@ import Add from "./pages/Add";
 export default function App() {
   return (
     <div>
-    <Home/>
-    {/* <Add/> */}
+    {/* <Home/> */}
+    <Add/>
     </div>
   )
 }

@@ -32,7 +32,7 @@ function AddStudent() {
       }
     
     return(
-        <div className="    h-[80vh]  bg-cover bg-no-repeat bg-[url('assets/images/hero2.jpg')]">
+        <div className="    h-[100vh]  bg-cover bg-no-repeat bg-[url('assets/images/hero4.jpg')]">
             <h2 className="font-bold text-[#34BAED] text-3xl text-center">ADD STUDENT CREDENTIALS</h2>
             <div className=" h-[fit-content] text-center  mx-auto flex flex-col w-[70%] items-center " >
             {formErrors.uploadStudentImage && (
