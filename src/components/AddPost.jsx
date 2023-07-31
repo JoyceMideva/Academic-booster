@@ -21,6 +21,8 @@ function AddPost() {
           (addErrors.firstName = "Please enter your first Name");
           (formField.lastName === undefined || formField.lastName === "") &&
           (addErrors.lastName = "Please enter your last Name");
+          (formField.phoneNumber === undefined || formField.phoneNumber === "") &&
+          (addErrors.phoneNumber = "Please enter your phone number");
         (formField.TypeOfScholarship === undefined || formField.TypeOfScholarship === "") &&
           (addErrors.TypeOfScholarship = "Please enter your class");
         (formField.select === undefined || formField.select === "") &&
@@ -55,6 +57,10 @@ function AddPost() {
         )}
                 <input onChange={(e) => handleChange(e)} type="text"  name="lastName"  className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]" placeholder="Last name" />
                 </div>
+                {formErrors.phoneNumber && (
+          <p className="text-red-500">{formErrors.phoneNumber}</p>
+        )}
+                <input onChange={(e) => handleChange(e)} type="text" name="phoneNumber"  className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]" placeholder="Phone Number" />
                 {formErrors.TypeOfScholarship && (
           <p className="text-red-500">{formErrors.TypeOfScholarship}</p>
         )}
@@ -78,7 +84,7 @@ function AddPost() {
           id=""
           cols="9"
           rows="5"
-          className=" my-5 py-4 px-2 border-2 border-grey-400 rounded-md w-[50%]"
+          className=" my-5 py-4 px-2 border-2 border-grey-400 outline-none rounded-md w-[50%]"
         >
         </textarea>
                 {success && (

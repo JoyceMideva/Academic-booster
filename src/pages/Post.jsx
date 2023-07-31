@@ -3,13 +3,13 @@ import AddStudent from "../components/AddStudent";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 
-function Add() {
+function Post() {
     return(
         <div>
             <Nav/>
-            <AddStudent/>
+            <AddPost/>
             <Footer/>
         </div>
     )
 }
-export default Add
+export default Post

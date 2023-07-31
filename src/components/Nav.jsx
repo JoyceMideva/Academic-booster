@@ -10,7 +10,7 @@ function Nav() {
 
          <li className="hidden md:block">Home</li>
 
- 
+         <li className="hidden md:block">Block</li>
           <select className="hidden md:block outline-none ">
             <option value="ADD" disabled>ADD</option>
             <option value="">SCHOLARSHIP_POST</option>
