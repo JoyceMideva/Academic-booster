@@ -1,10 +1,12 @@
 import { useState } from "react";
-
+import {BsFillCheckSquareFill} from "react-icons/bs"
 
 function AddStudent() {
 
     const [formField, setFormField] = useState({});
     const [formErrors, setFormErrors] = useState({});
+    const [success, setSuccess] = useState(false)
+
     const handleChange = (e) => {
         setFormField({ ...formField, [e.target.name]: e.target.value });
       };
@@ -28,6 +30,8 @@ function AddStudent() {
           (addErrors.nameOfInstitution =
             "Please enter your institutions name");
         setFormErrors(addErrors);
+        setSuccess(true)
+        methods.reset()
         console.log(addErrors);
       }
     
@@ -35,6 +39,7 @@ function AddStudent() {
         <div className="    h-[100vh]  bg-cover bg-no-repeat bg-[url('assets/images/hero4.jpg')]">
             <h2 className="font-bold text-[#34BAED] text-3xl text-center">ADD STUDENT CREDENTIALS</h2>
             <div className=" h-[fit-content] text-center  mx-auto flex flex-col w-[70%] items-center " >
+              
             {formErrors.uploadStudentImage && (
           <p className="text-red-500">{formErrors.uploadStudentImage}</p>
         )}
@@ -43,7 +48,7 @@ function AddStudent() {
 {formErrors.firstName && (
           <p className="text-red-500">{formErrors.firstName}</p>
         )}
-                <input onChange={(e) => handleChange(e)} type="text" name="FirstName"   className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]" placeholder="First Name" />
+                <input onChange={(e) => handleChange(e)} type="text" name="firstName"   className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]" placeholder="First Name" />
                 {formErrors.lastName && (
           <p className="text-red-500">{formErrors.lastName}</p>
         )}
@@ -62,6 +67,11 @@ function AddStudent() {
           <p className="text-red-500">{formErrors.nameOfInstitution}</p>
         )}
                 <input onChange={(e) => handleChange(e)} type="text" className="outline-none my-5 py-4 px-2 border-2 border-grey-400 rounded-md w-[50%]" name="nameOfInstitution" placeholder="Name of institution" />
+                {success && (
+            <p className="flex items-center gap-1 mb-5 font-semibold text-green-500">
+              <BsFillCheckSquareFill /> Form has been submitted successfully
+            </p>
+          )}   
 <button  onClick={(e) => handleAdd(e)}className=" sm:px-6  py-4 px-12  bg-[#3871C1] rounded-full font-bold text-[#fff] text-lg w-[30%]">Add To Page</button>
             </div>
         </div>
