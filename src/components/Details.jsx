@@ -6,6 +6,7 @@ function Details() {
   const [formErrors, setFormErrors] = useState({});
 
   const [formData, setFormData] = useState({});
+
   function handleLogin(e) {
     const errors = {};
     (formData.email === undefined || formData.email === "") &&
@@ -27,6 +28,23 @@ function Details() {
           <img src={login} />
         </div>
         <div className="p-6 justify-center flex-1 bg-[#3871c1]">
+        <div className="flex gap-6  my-12 w-[70%] justify-center">
+            <img src={google} width={50} />
+            <h2 className=" text-2xl font-bold text-white my-4">
+              Log In With Google
+            </h2>
+          </div>
+
+          <div className="flex gap-4">
+            <div className="w-[35%] border-b-2 border-gray-300"></div>
+            <p className="text-2xl my-1">OR</p>
+            <div className="w-[35%] border-b-2 border-gray-300"></div>
+          </div>
+             
+          <div className="flex justify-center w-[70%] gap-3 my-6">
+            <p className="text-2xl">Dont Have An Account Yet?</p>
+            <button className="text-white text-2xl">Sign Up</button>
+          </div>
           <div className="">
             {formErrors.email && (
               <p className="text-red-500">{formErrors.email}</p>
@@ -60,21 +78,7 @@ function Details() {
             Login
           </button>
 
-          <div className="flex gap-4">
-            <div className="w-[35%] border-b-2 border-gray-300"></div>
-            <p className="text-2xl my-1">OR</p>
-            <div className="w-[35%] border-b-2 border-gray-300"></div>
-          </div>
-          <div className="flex gap-6  my-12 w-[70%] justify-center">
-            <img src={google} width={50} />
-            <h2 className=" text-2xl font-bold text-white my-4">
-              Log In With Google
-            </h2>
-          </div>
-          <div className="flex justify-center w-[70%] gap-3">
-            <p className="text-2xl">Dont Have An Account Yet?</p>
-            <button className="text-white text-2xl">Sign Up</button>
-          </div>
+      
         </div>
       </div>
     </div>
