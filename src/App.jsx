@@ -1,14 +1,9 @@
-import About from "./pages/About";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Router from "./components/Router";
+
 export default function App() {
   return (
     <div>
-{/* <Home/> */}
-{/* <About/> */}
-{/* <Login/> */}
-<Signup/>
+    <Router/>
     </div>
   )
 }
