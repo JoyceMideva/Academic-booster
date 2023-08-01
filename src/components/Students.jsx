@@ -3,13 +3,13 @@ import { SlArrowRight } from "react-icons/sl";
 import { studentPortal } from "../data";
 function Students() {
   return (
-    <div className="container mx-auto flex  justify-between items-center  my-20  gap-10">
+    <div className="container mx-auto flex  justify-between items-center  my-2  gap-10">
       <SlArrowLeft size={40} className="cursor-pointer text-[#34BAED]" />
       {studentPortal.map((item) => {
         if (item.featured) {
           return (
-            <div className="border-2 border-gray-200 mx-5 shadow-2xl">
-              <div className="h-[300px] w-[300px]  bg-[#3871C1] relative ">
+            <div className="border-2   border-gray-200 mx-5 shadow-2xl">
+              <div className="w-[300px]  h-[300px] relative ">
                 <img
                   className="object-contain h-[100%] w-[100%] "
                   src={`/src/assets/images/${item.studentImage}`}
