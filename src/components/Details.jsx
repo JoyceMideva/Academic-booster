@@ -28,7 +28,7 @@ function Details() {
           <img src={login} />
         </div>
         <div className="p-6 justify-center flex-1 bg-[#3871c1]">
-          <div className="flex gap-6  my-12 w-[70%] justify-center">
+          <div className="flex gap-6  my-12 w-[100%] justify-center">
             <img src={google} width={50} />
             <h2 className=" text-2xl font-bold text-white my-4">
               Log In With Google
@@ -54,7 +54,7 @@ function Details() {
               onChange={(e) => handleChange(e)}
               type="text"
               placeholder="Email Address"
-              className=" justify-center p-5 w-[50%] outline-none rounded-md border-2"
+              className=" justify-center p-4 w-[50%] outline-none rounded-md border-2"
               name="email"
             />
           </div>
@@ -66,14 +66,14 @@ function Details() {
               onChange={(e) => handleChange(e)}
               type="password"
               placeholder="Password"
-              className="p-5 w-[50%] outline-none rounded-md border-2"
+              className="p-4 w-[50%] outline-none rounded-md border-2"
               name="password"
             />
           </div>
         
             <button
               onClick={(e) => handleLogin(e)}
-              className=" bg-white my-5 text-lg font-bold text-[#3871c1] py-4 px-2 w-[50%] rounded-full mx-16"
+              className=" bg-white my-3 text-lg font-bold text-[#3871c1] py-4 px-2 w-[50%] rounded-full"
               type="submit"
             >
               Login
