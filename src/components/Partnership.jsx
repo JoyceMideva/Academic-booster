@@ -1,7 +1,7 @@
 import safaricom from "../assets/images/safaricom.png"
 import uncf from "../assets/images/uncf.jpeg"
 import  equity from "../assets/images/equity.png"
-
+import  unicaf from "../assets/images/unicaf.png"
 function Partnership() {
   return (
     <div className=" container mx-auto my-20">
@@ -16,7 +16,7 @@ function Partnership() {
 <img src={safaricom} width={400}  alt="" srcset="" />
 <img src={uncf} width={400} alt="" srcset="" />
 <img src={equity} width={400} alt="" srcset="" />
-{/* <img src={} alt="" srcset="" /> */}
+<img src={unicaf} alt="" srcset="" />
 
       </div>
     </div>
