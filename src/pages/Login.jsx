@@ -7,6 +7,7 @@ function Login() {
     <div>
         <Nav/>
       <Details />
+      <Footer/>
     </div>
   );
 }
