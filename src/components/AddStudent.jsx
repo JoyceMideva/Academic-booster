@@ -153,7 +153,7 @@ Why do you deserve this scholarship?</p>
           className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]"
           placeholder="Reason for application"
         />
-        <p></p>
+        
         {success && (
           <p className="flex items-center gap-1 mb-5 font-semibold text-green-500">
             <BsFillCheckSquareFill /> Form has been submitted successfully
