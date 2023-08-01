@@ -6,9 +6,12 @@ import { FaEnvelope,FaPhoneAlt } from "react-icons/fa";
 function Footer() {
   return (
     <div className="  text-lg bg-slate-300 ">
+      <div className="flex flex-col ">
+      <button className=" sm:px-6 border-2 py-4 px-12  bg-[#3871C1] rounded-full font-bold text-[#fff] text-xl w-[15%] mx-auto capitalize">Donate</button>
       <h1 className="font-bold text-2xl text-[#34BAED] text-center">
         Donate & Keep The site Running
       </h1>
+      </div>
       <h4 className="text-center">Contact us</h4>
       <div className="flex items-center justify-center gap-3 flex-col ">
         <div className="flex gap-3 items-center justify-center">
