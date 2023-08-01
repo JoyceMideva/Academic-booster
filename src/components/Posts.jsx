@@ -5,7 +5,7 @@ function Posts() {
   return (
     <div>
       <div className="container mx-auto my-20">
-        <h2 className="text-center my-3 text-2xl font-bold capitalize">SCHOLARSHIP-posts</h2>
+        <h2 className="text-center my-3 text-2xl text-[#34BAED] font-bold capitalize">SCHOLARSHIP-POSTS</h2>
         <div className="flex gap-12 justify-between items-center">
           <Post icon={munene} category="Robert Munene" type="fulltimescholarship" requirements=""/>
           <Post icon={munene} category="Duncan Lanogwa" type="fulltimescholarship" requirements="" />
