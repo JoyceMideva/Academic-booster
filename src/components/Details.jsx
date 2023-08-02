@@ -23,7 +23,7 @@ function Details() {
   }
   return (
     <div className="container mx-auto  h-[100vh] ">
-      <div className="flex ">
+      <div className="flex  ">
         <div className="flex-1">
           <img src={login} />
         </div>
@@ -45,8 +45,8 @@ function Details() {
             <p className="text-2xl">Dont Have An Account Yet?</p>
             <button className="text-white text-2xl">Sign Up</button>
           </div>
-          <div>
-          <div className="">
+          <div className="mx-auto">
+          <div className="mx-auto">
             {formErrors.email && (
               <p className="text-red-500">{formErrors.email}</p>
             )}
