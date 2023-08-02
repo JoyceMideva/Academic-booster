@@ -6,8 +6,7 @@ import Nav from "../components/Nav";
 import Student from "../components/Student";
 import Footer from "../components/Footer";
 import Partnership from "../components/Partnership";
-import { useEffect } from "react";
-import { useContext } from "react";
+import { useEffect,useContext } from "react";
 import { StateContext } from "../context/State";
 import { db } from "../firebase";
  function Home() {

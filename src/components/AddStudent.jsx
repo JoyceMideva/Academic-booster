@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { BsFillCheckSquareFill } from "react-icons/bs";
-import { getFirestore } from "firebase/firestore";
+
 import { app } from "../firebase";
+import {
+  getFirestore,
+  // doc,
+  // setDoc,
+  // collection,
+  addDoc,
+} from "firebase/firestore";
 function AddStudent() {
   const [formField, setFormField] = useState({});
   const [formErrors, setFormErrors] = useState({});
