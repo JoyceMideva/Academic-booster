@@ -55,7 +55,8 @@ function AddPost() {
     //   formField.uploadSponsorImage === "") &&
     //   (addErrors.uploadSponsorImage =
     //     "Please enter your uploaded Sponsor image");
-
+    (formField.organisationName === undefined || formField.organisationName === "") &&
+    (addErrors.organisationName = "Please enter your organisation Name");
     (formField.firstName === undefined || formField.firstName === "") &&
       (addErrors.firstName = "Please enter your first Name");
     (formField.lastName === undefined || formField.lastName === "") &&
@@ -109,6 +110,16 @@ function AddPost() {
         ) : (
           <img src={loaderImg} alt="" />
         )}
+        {formErrors.organisationName && (
+          <p className="text-red-500">{formErrors.organisationName}</p>
+        )}
+        <input
+          onChange={(e) => handleChange(e)}
+          type="text"
+          name="organisationName"
+          className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]"
+          placeholder="organisation Name"
+        />
 
         {formErrors.firstName && (
           <p className="text-red-500">{formErrors.firstName}</p>
