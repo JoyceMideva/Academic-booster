@@ -1,14 +1,10 @@
 import { useState } from "react";
 import { BsFillCheckSquareFill } from "react-icons/bs";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-} from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { getStorage, ref, uploadString } from "firebase/storage";
 import { app } from "../firebase";
 import loaderImg from "../assets/images/loader.gif";
-import { initializeApp } from "firebase/app";
+
 function AddPost() {
   const [formField, setFormField] = useState({});
   const [formErrors, setFormErrors] = useState({});
@@ -53,8 +49,9 @@ function AddPost() {
     //   formField.uploadSponsorImage === "") &&
     //   (addErrors.uploadSponsorImage =
     //     "Please enter your uploaded Sponsor image");
-    (formField.organisationName === undefined || formField.organisationName === "") &&
-    (addErrors.organisationName = "Please enter your organisation Name");
+    (formField.organisationName === undefined ||
+      formField.organisationName === "") &&
+      (addErrors.organisationName = "Please enter your organisation Name");
     (formField.firstName === undefined || formField.firstName === "") &&
       (addErrors.firstName = "Please enter your first Name");
     (formField.lastName === undefined || formField.lastName === "") &&
@@ -80,7 +77,7 @@ function AddPost() {
       setSuccess(true);
 
       await addDoc(collection(db, "scholarships"), formField);
-      
+
       // await setDoc(doc(db, "scholarships"), formField)
       // console.log(formField);
     }
