@@ -5,21 +5,22 @@ function Nav() {
   return (
     <div className="container mx-auto  flex justify-between items-center capitalize">
       <div className="">
-        <ul className=" flex justify-between gap-10 items-center cursor-pointer relative group  text-lg py-4">
+        <ul className=" flex justify-between gap-10 items-center cursor-pointer relative  text-lg py-4">
           <Link to="/">
+            {" "}
             <li>
               <img className="w-40" src={logo1} />
             </li>
           </Link>
           <Link to="/">
-            
+            {" "}
             <li className="hidden md:block">Home</li>
           </Link>
           <Link to="/aboutus">
             <li className="hidden md:block">About us</li>
           </Link>
           <Link to="/post">
-            <li className="absolute invisible group-hover:visible bottom-15 right-90 "  value="">
+            <li className="absolute top-0 left-1" value="">
               Postschorlarship
             </li>
           </Link>
@@ -28,7 +29,7 @@ function Nav() {
       <div>
         <ul className="flex justify-between cursor-pointer gap-10 items-center  text-lg py-4">
           <Link to="/signup">
-            
+            {" "}
             <li>sign up</li>
           </Link>
 
