@@ -1,12 +1,12 @@
-import { useContext,createContext, useState } from "react"
+import { useContext,createContext, useState} from "react"
 export const StateContext = createContext();
 
-function State() {
-const [schorlar,setScholar]=useState()
+function State({children}) {
+const [scholarships,setScholarships]=useState([])
     return(
-        <div>
-
-        </div>
+<StateContext.Provider value={{scholarships, setScholarships}}>
+    {children}
+</StateContext.Provider>
 
     )
 }
