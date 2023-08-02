@@ -1,41 +1,51 @@
 import { useState } from "react";
 import { BsFillCheckSquareFill } from "react-icons/bs";
-import { getFirestore,doc,setDoc, collection, addDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  collection,
+  addDoc,
+} from "firebase/firestore";
 import { getStorage, ref, uploadString } from "firebase/storage";
 import { app } from "../firebase";
-import loaderImg from "../assets/images/loader.gif"
+import loaderImg from "../assets/images/loader.gif";
+import { initializeApp } from "firebase/app";
 function AddPost() {
   const [formField, setFormField] = useState({});
   const [formErrors, setFormErrors] = useState({});
   const [success, setSuccess] = useState(false);
-const [loader,setLoader]=useState(true)
+  const [loader, setLoader] = useState(true);
   const [base64File, setBase64File] = useState(null);
   const db = getFirestore(app);
+
   const handleChange = (e) => {
     setFormField({ ...formField, [e.target.name]: e.target.value });
   };
 
   const handleImageChange = async (e) => {
     const storage = getStorage(app);
-    setLoader(false)
+    setLoader(false);
     const storageRef = ref(storage, `posts/${e.target.files[0].name}`);
-   
+
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onload = function () {
       // Store in Firebase storage
       uploadString(storageRef, reader.result, "data_url").then((snapshot) => {
-
-      setFormField(prev=>({...prev, sponsorImage:`https://firebasestorage.googleapis.com/v0/b/academic-booster-6cc3f.appspot.com/o/posts%2F${file.name}?alt=media`}))
+        setFormField((prev) => ({
+          ...prev,
+          sponsorImage: `https://firebasestorage.googleapis.com/v0/b/academic-booster-6cc3f.appspot.com/o/posts%2F${file.name}?alt=media`,
+        }));
         console.log("Uploaded a data_url string!");
-        setLoader(true)
+        setLoader(true);
       });
 
       console.log(reader.result);
     };
     reader.readAsDataURL(file);
   };
- async function handleAdd(e) {
+  async function handleAdd(e) {
     e.preventDefault();
     const addErrors = {};
     {
@@ -45,7 +55,8 @@ const [loader,setLoader]=useState(true)
     //   formField.uploadSponsorImage === "") &&
     //   (addErrors.uploadSponsorImage =
     //     "Please enter your uploaded Sponsor image");
-        
+    (formField.organisationName === undefined || formField.organisationName === "") &&
+    (addErrors.organisationName = "Please enter your organisation Name");
     (formField.firstName === undefined || formField.firstName === "") &&
       (addErrors.firstName = "Please enter your first Name");
     (formField.lastName === undefined || formField.lastName === "") &&
@@ -71,33 +82,44 @@ const [loader,setLoader]=useState(true)
       setSuccess(true);
 
       await addDoc(collection(db, "scholarships"), formField);
-
+      
       // await setDoc(doc(db, "scholarships"), formField)
       // console.log(formField);
     }
   }
 
   return (
-    <div className="    h-[fit-content]   bg-cover bg-no-repeat bg-[linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url('assets/images/photo1.jpg')]">
+    <div className="    h-[fit-content]   bg-cover bg-no-repeat bg-[linear-gradient(rgba(1,1,1,.5),rgba(1,1,1,.5)),url('assets/images/photo1.jpg')]">
       <h2 className="font-bold text-[#34BAED] text-3xl text-center">
-        ADD Sponsor CREDENTIALS
+        ADD SCHORLARSHIP POSTS
       </h2>
       <div className=" h-[fit-content] text-center  mx-auto flex flex-col w-[70%] items-center ">
         {formErrors.uploadSponsorImage && (
           <p className="text-red-500">{formErrors.uploadSponsorImage}</p>
         )}
-        
+
         <input
           onChange={(e) => handleImageChange(e)}
           type="file"
           name="uploadSponsorImage"
           className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]"
           placeholder="Sponsor profile"
-          
         />
-{loader?<img src={formField.sponsorImage && formField.sponsorImage}/>:<img src={loaderImg} alt="" />}
-
-        
+        {loader ? (
+          <img src={formField.sponsorImage && formField.sponsorImage} />
+        ) : (
+          <img src={loaderImg} alt="" />
+        )}
+        {formErrors.organisationName && (
+          <p className="text-red-500">{formErrors.organisationName}</p>
+        )}
+        <input
+          onChange={(e) => handleChange(e)}
+          type="text"
+          name="organisationName"
+          className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]"
+          placeholder="organisation Name"
+        />
 
         {formErrors.firstName && (
           <p className="text-red-500">{formErrors.firstName}</p>
@@ -172,9 +194,9 @@ const [loader,setLoader]=useState(true)
         )}
         <button
           onClick={(e) => handleAdd(e)}
-          className=" sm:px-6  py-4 px-12  bg-[#3871C1] rounded-full font-bold text-[#fff] text-lg w-[30%]"
+          className=" sm:px-6  py-4 px-12 mb-5  bg-[#3871C1] rounded-full font-bold text-[#fff] text-lg w-[30%]"
         >
-          Add To Page
+          Add Post
         </button>
       </div>
     </div>

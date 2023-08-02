@@ -8,7 +8,7 @@ function Students() {
       {studentPortal.map((item) => {
         if (item.featured) {
           return (
-            <div className="border-2   border-gray-200 mx-5 shadow-2xl">
+            <div className="border-2 px-5   border-gray-200 mx-5 shadow-2xl">
               <div className="w-[300px]  h-[300px] relative ">
                 <img
                   className="object-contain h-[100%] w-[100%] "
