@@ -1,83 +1,104 @@
-import google from "../assets/images/google.png";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 import login from "../assets/images/login.jpeg";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router";
 
 function Details() {
-  const [formErrors, setFormErrors] = useState({});
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
+  const auth = getAuth();
 
+  const [formErrors, setFormErrors] = useState({});
+  const emailRef = useRef();
+  const [loginError, setLoginError] = useState("");
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({});
 
   function handleLogin(e) {
+    e.preventDefault();
+
     const errors = {};
     (formData.email === undefined || formData.email === "") &&
       (errors.email = "Please enter your email");
     (formData.password === undefined || formData.password === "") &&
       (errors.password = "Please enter your password");
     setFormErrors(errors);
-    console.log(errors);
-    e.preventDefault();
-    console.log(formData);
+
+    signInWithEmailAndPassword(auth, formData.email, formData.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user.email);
+        setFormData({
+          email: "",
+          password: "",
+        });
+        setLoginError("");
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorMsg = error.message.substring(22, error.message.length - 2);
+        setLoginError(errorMsg);
+        console.log(error)
+      });
+
+    // console.log(errors);
   }
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
   return (
     <div className="container mx-auto  h-[100vh] ">
-      <div className="flex  ">
+      <div className="flex ">
         <div className="flex-1">
           <img src={login} />
         </div>
         <div className="p-6 justify-center flex-1 bg-[#3871c1]">
-          <div className="flex gap-6  my-12 w-[100%] justify-center">
-            <img src={google} width={50} />
-            <h2 className=" text-2xl font-bold text-white my-4">
-              Log In With Google
-            </h2>
-          </div>
-
-          <div className="flex gap-4 justify-center">
-            <div className="w-[35%] border-b-2 border-gray-300"></div>
-            <p className="text-2xl my-1">OR</p>
-            <div className="w-[35%] border-b-2 border-gray-300"></div>
-          </div>
-
           <div className="flex justify-center w-[100%] gap-3 my-6">
             <p className="text-2xl">Dont Have An Account Yet?</p>
             <button className="text-white text-2xl">Sign Up</button>
           </div>
-          <div className="mx-auto">
-          <div className="mx-auto">
-            {formErrors.email && (
-              <p className="text-red-500">{formErrors.email}</p>
-            )}
-            <input
-              onChange={(e) => handleChange(e)}
-              type="text"
-              placeholder="Email Address"
-              className=" justify-center p-4 w-[50%] outline-none rounded-md border-2"
-              name="email"
-            />
-          </div>
-          <div className=" my-16">
-            {formErrors.password && (
-              <p className="text-red-500">{formErrors.password}</p>
-            )}
-            <input
-              onChange={(e) => handleChange(e)}
-              type="password"
-              placeholder="Password"
-              className="p-4 w-[50%] outline-none rounded-md border-2"
-              name="password"
-            />
-          </div>
-        
-            <button
-              onClick={(e) => handleLogin(e)}
-              className=" bg-white my-3 text-lg font-bold text-[#3871c1] py-4 px-2 w-[50%] rounded-full"
-              type="submit"
-            >
-              Login
-            </button>
+          {loginError !== "" && (
+            <p className="text-red-500 capitalize text-2xl text-center">{loginError}</p>
+          )}
+          <div>
+              {formErrors.email && (
+                <p className="text-red-500 text-center">{formErrors.email}</p>
+              )}
+            <div className="my-10 flex justify-center">
+              <input
+                onChange={(e) => handleChange(e)}
+                type="text"
+                placeholder="Email Address"
+                className=" justify-center p-5 w-[50%] outline-none rounded-md border-2"
+                name="email"
+                ref={emailRef}
+                value={formData.email}
+              />
+            </div>
+              {formErrors.password && (
+                <p className="text-red-500 text-center">{formErrors.password}</p>
+              )}
+            <div className=" my-10 flex justify-center">
+              <input
+                onChange={(e) => handleChange(e)}
+                type="password"
+                placeholder="Password"
+                className="p-5 w-[50%] outline-none rounded-md border-2"
+                name="password"
+                value={formData.password}
+              />
+            </div>
+            <div className="my-16 flex justify-center">
+              <button
+                onClick={(e) => handleLogin(e)}
+                className=" bg-white my-3 text-lg font-bold text-[#3871c1] py-4 px-2 w-[50%] rounded-full"
+                type="submit"
+              >
+                Login
+              </button>
+            </div>
           </div>
         </div>
       </div>
