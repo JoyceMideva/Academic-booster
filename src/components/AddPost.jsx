@@ -2,8 +2,6 @@ import { useState } from "react";
 import { BsFillCheckSquareFill } from "react-icons/bs";
 import {
   getFirestore,
-  doc,
-  setDoc,
   collection,
   addDoc,
 } from "firebase/firestore";
