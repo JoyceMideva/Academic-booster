@@ -73,6 +73,7 @@ function Sign() {
           {signUpError !== "" && (
             <p className="text-red-500 capitalize text-center">{signUpError}</p>
           )}
+          <div className="my-24">
 
           <div className="mx-5 justify-center">
           {formErrors.firstName && (
@@ -149,7 +150,7 @@ function Sign() {
                   Applicant
                 </option>
                 <option className="border-none" value="organization">
-                  Scholarship organization
+                  Sponsor
                 </option>
               </select>
             </div>
@@ -173,6 +174,7 @@ function Sign() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
