@@ -38,7 +38,11 @@ function Nav() {
               </button>
             </li>
           </Link>
-
+          <li>
+              <button className="border-2  border-black  py-2 px-6  rounded-full">
+                Log out
+              </button>
+            </li>
           <li className="block md:hidden ">
             <FaBars size={25} />
           </li>
