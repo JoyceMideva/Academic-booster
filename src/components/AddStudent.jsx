@@ -20,14 +20,11 @@ function AddStudent() {
   async function handleAdd(e) {
     e.preventDefault();
     const addErrors = {};
-    (formField.uploadStudentImage === undefined ||
-      formField.uploadStudentImage === "") &&
-      (addErrors.uploadStudentImage =
-        "Please enter your uploaded student image");
-    (formField.firstName === undefined || formField.firstName === "") &&
-      (addErrors.firstName = "Please enter your first Name");
-    (formField.lastName === undefined || formField.lastName === "") &&
-      (addErrors.lastName = "Please enter your last Name");
+
+    (formField.names === undefined || formField.names === "") &&
+      (addErrors.names = "Please enter your Name");
+    (formField.goalOfLife === undefined || formField.goalOfLife === "") &&
+      (addErrors.goalOfLife = "Please enter your goal in life");
     (formField.classOfStudent === undefined ||
       formField.classOfStudent === "") &&
       (addErrors.classOfStudent = "Please enter your class");
@@ -36,21 +33,19 @@ function AddStudent() {
     (formField.nameOfInstitution === undefined ||
       formField.nameOfInstitution === "") &&
       (addErrors.nameOfInstitution = "Please enter your institutions name");
-    (formField.DetailedPersonDescription === undefined ||
-      formField.DetailedPersonDescription === "") &&
-      (addErrors.DetailedPersonDescription =
-        "Please enter your Detailed Person Description");
+    (formField.reason === undefined || formField.reason === "") &&
+      (addErrors.reason = "Please enter your Detailed Person Description");
+    (formField.reason === undefined || formField.reason === "") &&
+      (addErrors.reason = "Please enter your Detailed reason Description");
+    (formField.application === undefined || formField.application === "") &&
+      (addErrors.application = "Please enter your Detailed Person Description");
 
     setFormErrors(addErrors);
 
     console.log(addErrors);
     if (Object.keys(addErrors).length === 0) {
       setSuccess(true);
-
-      await addDoc(collection(db, "scholarships"), formField);
-
-      // await setDoc(doc(db, "scholarships"), formField)
-      // console.log(formField);
+      await addDoc(collection(db, "students"), formField);
     }
   }
 
@@ -60,19 +55,12 @@ function AddStudent() {
         ADD STUDENT CREDENTIALS
       </h2>
       <div className=" h-[fit-content] text-center  mx-auto flex flex-col w-[70%] items-center ">
-        {/* {formErrors.uploadStudentImage && (
-          <p className="text-red-500">{formErrors.uploadStudentImage}</p>
-        )}
-                <input onChange={(e) => handleChange(e)} type="file" name="uploadStudentImage"  className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]" placeholder="Student profile" /> */}
-
-        {formErrors.firstName && (
-          <p className="text-red-500">{formErrors.firstName}</p>
-        )}
-        <p>Whats Your Name</p>
+        {formErrors.names && <p className="text-red-500">{formErrors.names}</p>}
+        <p>Whats Your Names</p>
         <input
           onChange={(e) => handleChange(e)}
           type="text"
-          name="firstName"
+          name="names"
           className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]"
           placeholder="First Name"
         />
@@ -129,6 +117,9 @@ function AddStudent() {
           placeholder="Name of institution"
         />
         <p>Where did you hear about this schorlarship site</p>
+        {formErrors.select && (
+          <p className="text-red-500">{formErrors.select}</p>
+        )}
         <select
           onChange={(e) => handleChange(e)}
           className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]"
@@ -145,26 +136,35 @@ function AddStudent() {
           <option value="universityCollege">social media platforms</option>
         </select>
         <p>What your Goal in life</p>
+        {formErrors.goalOfLife && (
+          <p className="text-red-500">{formErrors.goalOfLife}</p>
+        )}
         <input
           onChange={(e) => handleChange(e)}
           type="text"
-          name="classOfStudent"
+          name="goalOfLife"
           className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]"
           placeholder="Goal in life"
         />
         <p>Why did You Decide to apply scholarship using the site</p>
+        {formErrors.application && (
+          <p className="text-red-500">{formErrors.application}</p>
+        )}
         <input
           onChange={(e) => handleChange(e)}
           type="text"
-          name="classOfStudent"
+          name="application"
           className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]"
           placeholder="Reason for application"
         />
         <p>Why do you deserve this scholarship?</p>
+        {formErrors.reason && (
+          <p className="text-red-500">{formErrors.reason}</p>
+        )}
         <input
           onChange={(e) => handleChange(e)}
           type="text"
-          name="classOfStudent"
+          name="reason"
           className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]"
           placeholder="Reason for application"
         />
@@ -176,7 +176,7 @@ function AddStudent() {
         )}
         <button
           onClick={(e) => handleAdd(e)}
-          className=" sm:px-6  py-4 px-12 bg-[#fff]   rounded-full font-bold text-[#000] text-lg w-[30%]"
+          className=" mb-3 sm:px-6  py-4 px-12 bg-[#fff]   rounded-full font-bold text-[#000] text-lg w-[30%]"
         >
           Submit
         </button>

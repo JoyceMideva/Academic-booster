@@ -10,10 +10,10 @@ function Posts() {
           {console.log(scholarships&&scholarships)}
       <div className="container mx-auto my-20">
         <h2 className="text-center my-3 text-2xl text-[#34BAED] font-bold capitalize">
-          SCHOLARSHIP-POSTS
+          FEATURED-POSTS
         </h2>
         <div className="flex gap-12 justify-between items-center">
-          {scholarships.map((item) => {
+          {scholarships.splice(0,4).map((item) => {
             return (
               <Post
                 icon={item.sponsorImage}

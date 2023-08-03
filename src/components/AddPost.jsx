@@ -3,7 +3,7 @@ import { BsFillCheckSquareFill } from "react-icons/bs";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { getStorage, ref, uploadString } from "firebase/storage";
 import { app } from "../firebase";
-import loaderImg from "../assets/images/loader.gif";
+import loaderImg from "../assets/images/loader1.gif";
 
 function AddPost() {
   const [formField, setFormField] = useState({});
