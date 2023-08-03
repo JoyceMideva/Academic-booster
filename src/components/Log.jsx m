@@ -33,7 +33,7 @@ function Sign() {
       (errors.password = "Please enter your password");
     (formData.category === undefined || formData.category === "") &&
       (errors.category = "Please select category");
-  
+
     setFormErrors(errors);
 
     createUserWithEmailAndPassword(auth, formData.email, formData.password)
@@ -75,8 +75,10 @@ function Sign() {
           )}
 
           <div className="mx-5 justify-center">
-          {formErrors.firstName && (
-              <p className="text-red-500 text-center text-2xl">{formErrors.firstName}</p>
+            {formErrors.firstName && (
+              <p className="text-red-500 text-center text-2xl">
+                {formErrors.firstName}
+              </p>
             )}
             <div className="flex justify-center">
               <input
@@ -85,12 +87,13 @@ function Sign() {
                 placeholder="First Name"
                 className="outline-none rounded-md border-2 p-4 w-[50%]"
                 name="firstName"
-              
                 value={formData.firstName}
               />
             </div>
             {formErrors.lastName && (
-              <p className="text-red-500 text-center text-2xl">{formErrors.lastName}</p>
+              <p className="text-red-500 text-center text-2xl">
+                {formErrors.lastName}
+              </p>
             )}
             <div className="flex justify-center my-7">
               <input
@@ -99,12 +102,13 @@ function Sign() {
                 placeholder="Last Name"
                 className="outline-none rounded-md border-2 p-4 w-[50%]"
                 name="lastName"
-                
                 value={formData.lastName}
               />
             </div>
             {formErrors.email && (
-              <p className="text-red-500 text-center text-2xl">{formErrors.email}</p>
+              <p className="text-red-500 text-center text-2xl">
+                {formErrors.email}
+              </p>
             )}
             <div className="flex justify-center">
               <input
@@ -118,7 +122,9 @@ function Sign() {
               />
             </div>
             {formErrors.password && (
-              <p className="text-red-500 text-center text-2xl my-1">{formErrors.password}</p>
+              <p className="text-red-500 text-center text-2xl my-1">
+                {formErrors.password}
+              </p>
             )}
             <div className="flex justify-center my-7">
               <input
@@ -130,9 +136,11 @@ function Sign() {
                 value={formData.password}
               />
             </div>
-        
+
             {formErrors.category && (
-              <p className="text-red-500 text-center text-2xl">{formErrors.category}</p>
+              <p className="text-red-500 text-center text-2xl">
+                {formErrors.category}
+              </p>
             )}
             <div className="flex justify-center my-7">
               <select
