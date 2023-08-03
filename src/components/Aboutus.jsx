@@ -3,8 +3,8 @@ import vision from "../assets/images/vision.jpeg";
 function Aboutus() {
   return (
     <div>
-      <div className="flex items-center flex-col  justify-center h-[80vh]  bg-cover bg-center bg-no-repeat bg-[url('assets/images/hero3.jpg')]">
-        <h1 className="text-[#00ADEE] py-3 font-bold text-6xl ">ABOUT US</h1>
+      <div className="flex items-center flex-col  justify-center h-[80vh]  bg-cover bg-center bg-no-repeat bg-[linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url('assets/images/hero.jpg')]">
+        <h1 className="text-[#00ADEE] py-3 font-bold text-6xl">ABOUT US</h1>
         <h2 className="font-bold text-5xl my-6 text-[#00ADEE]">
           An investment in knowledge, pays the best interest
         </h2>
@@ -25,7 +25,7 @@ function Aboutus() {
       </div>
       <div className="flex container mx-auto my-5">
         <div className="flex-1">
-          <img src={mission} width={700} />
+          <img src={mission} width={800} />
         </div>
         <div className="flex-1 bg-[#00ADEE] w-[10%]">
           <h1 className="p-6 text-4xl text-white">MISSION</h1>
@@ -52,7 +52,7 @@ function Aboutus() {
           </p>
         </div>
         <div className="flex-1">
-          <img src={vision} width={700} />
+          <img src={vision} width={800} />
         </div>
       </div>
     </div>

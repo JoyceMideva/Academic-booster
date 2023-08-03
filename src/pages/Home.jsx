@@ -1,3 +1,4 @@
+
 import Posts from "../components/Posts";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
@@ -33,7 +34,9 @@ import { db } from "../firebase";
       <Student />
       <Partnership />
       <Footer />
+      
     </div>
   );
 }
+ 
 export default Home;

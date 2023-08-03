@@ -6,7 +6,7 @@ function Donate() {
   return (
     <div>
       <Nav />
-      <Donates/>
+      <Donates />
       <Footer />
     </div>
   );
