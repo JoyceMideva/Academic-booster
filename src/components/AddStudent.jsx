@@ -1,15 +1,23 @@
-import { useState } from "react";
 import { BsFillCheckSquareFill } from "react-icons/bs";
+import { useState } from "react";
 
+import { app } from "../firebase";
+import {
+  getFirestore,
+  // doc,
+  // setDoc,
+  collection,
+  addDoc,
+} from "firebase/firestore";
 function AddStudent() {
   const [formField, setFormField] = useState({});
   const [formErrors, setFormErrors] = useState({});
   const [success, setSuccess] = useState(false);
-
+  const db = getFirestore(app);
   const handleChange = (e) => {
     setFormField({ ...formField, [e.target.name]: e.target.value });
   };
-  function handleAdd(e) {
+  async function handleAdd(e) {
     e.preventDefault();
     const addErrors = {};
     (formField.uploadStudentImage === undefined ||
@@ -34,8 +42,16 @@ function AddStudent() {
         "Please enter your Detailed Person Description");
 
     setFormErrors(addErrors);
-    setSuccess(true);
+
     console.log(addErrors);
+    if (Object.keys(addErrors).length === 0) {
+      setSuccess(true);
+
+      await addDoc(collection(db, "scholarships"), formField);
+
+      // await setDoc(doc(db, "scholarships"), formField)
+      // console.log(formField);
+    }
   }
 
   return (
@@ -144,16 +160,15 @@ function AddStudent() {
           className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]"
           placeholder="Reason for application"
         />
-        <p>
-Why do you deserve this scholarship?</p>
-<input
+        <p>Why do you deserve this scholarship?</p>
+        <input
           onChange={(e) => handleChange(e)}
           type="text"
           name="classOfStudent"
           className="outline-none my-5 py-4 px-2 border-2 border-gray-400 rounded-md w-[50%]"
           placeholder="Reason for application"
         />
-        
+
         {success && (
           <p className="flex items-center gap-1 mb-5 font-semibold text-green-500">
             <BsFillCheckSquareFill /> Form has been submitted successfully

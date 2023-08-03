@@ -34,9 +34,7 @@ import { db } from "../firebase";
       <Student />
       <Partnership />
       <Footer />
-      <Student/>
-      <Partnership/>
-      <Footer/>
+      
     </div>
   );
 }

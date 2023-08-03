@@ -4,12 +4,12 @@ import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 
 function Post() {
-    return(
-        <div>
-            <Nav/>
-            <AddPost/>
-            <Footer/>
-        </div>
-    )
+  return (
+    <div>
+      <Nav />
+      <AddPost />
+      <Footer />
+    </div>
+  );
 }
-export default Post
+export default Post;

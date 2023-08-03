@@ -84,7 +84,7 @@ function AddPost() {
   }
 
   return (
-    <div className="    h-[fit-content]   bg-cover bg-no-repeat bg-[linear-gradient(rgba(1,1,1,.5),rgba(1,1,1,.5)),url('assets/images/photo1.jpg')]">
+    <div className="    h-[fit-content]   bg-cover bg-no-repeat bg-[linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url('assets/images/hero5.jpg')]">
       <h2 className="font-bold text-[#34BAED] text-3xl text-center">
         ADD SCHORLARSHIP POSTS
       </h2>
