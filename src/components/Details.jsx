@@ -49,10 +49,10 @@ function Details() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
   return (
-    <div className="container mx-auto  h-[100vh] ">
+    <div className="container mx-auto flex-1 ">
       <div className="flex ">
-        <div className="flex-1">
-          <img src={login} />
+      <div className="flex-1 bg-cover bg-no-repeat bg-[url('assets/images/lgn.webp')] ">
+          {/* <img src={signup} /> */}
         </div>
         <div className="p-6 justify-center flex-1 bg-[#3871c1]">
           <div className="flex justify-center w-[100%] gap-3 my-6">
