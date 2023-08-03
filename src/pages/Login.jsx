@@ -4,10 +4,10 @@ import Nav from "../components/Nav";
 
 function Login() {
   return (
-    <div>
-        <Nav/>
+    <div className="h-[100vh] flex flex-col">
+        <Nav className="flex-1 "/>
       <Details />
-      <Footer/>
+      <Footer className="flex-1 "/>
     </div>
   );
 }

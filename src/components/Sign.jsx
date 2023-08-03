@@ -2,7 +2,6 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 import { app, db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
-import signup from "../assets/images/login.jpeg";
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -10,7 +9,7 @@ function Sign() {
   useEffect(() => {
     emailRef.current.focus();
   }, []);
-  const auth = getAuth();
+  const auth = getAuth(app);
 
   const [formErrors, setFormErrors] = useState({});
   const [signUpError, setSignUpError] = useState("");
@@ -23,7 +22,7 @@ function Sign() {
 
     const errors = {};
 
-    (formData.firstName === undefined || formData.firstName === "") &&
+    (formData.names === undefined || formData.firstName === "") &&
       (errors.firstName = "Please enter your first name");
     (formData.lastName === undefined || formData.lastName === "") &&
       (errors.lastName = "Please enter your last name");
@@ -34,8 +33,7 @@ function Sign() {
       (errors.password = "Please enter your password");
     (formData.category === undefined || formData.category === "") &&
       (errors.category = "Please select category");
-    // (formData.confirm === undefined || formData.confirm === "") &&
-    // (errors.confirm = "Please select category");
+  
     setFormErrors(errors);
 
     createUserWithEmailAndPassword(auth, formData.email, formData.password)
@@ -65,8 +63,8 @@ function Sign() {
   return (
     <div className="container mx-auto   ">
       <div className="flex h-[86vh]">
-        <div className="flex-1 ">
-          <img src={signup} />
+        <div className="flex-1 bg-cover bg-no-repeat bg-[url('assets/images/login.jpeg')] ">
+          {/* <img src={signup} /> */}
         </div>
         <div className=" flex-1 bg-[#3871c1]">
           <h1 className="text-4xl font-bold text-center text-white my-3">
