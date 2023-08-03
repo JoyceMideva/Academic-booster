@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import logo1 from "../assets/images/logo1.png";
+
 import { useEffect, useContext } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { StateContext } from "../context/State";
@@ -27,6 +28,20 @@ function Nav() {
       });
     })();
   }, []);
+
+import { useContext, useEffect, useState } from "react";
+import { StateContext } from "../context/State";
+function Nav() {
+  // const {islogin} = useState(StateContext);
+  // const [login, setLogin]=islogin
+  const { login,setLogin} = useContext(StateContext);
+  useEffect(() => {
+    let userData = localStorage.getItem("user");
+    if (userData) {
+      setLogin(true);
+    }
+  }, []);
+
   return (
     <div className="container mx-auto  flex justify-between items-center capitalize">
       <div className="">
@@ -43,10 +58,15 @@ function Nav() {
           <Link to="/aboutus">
             <li className="hidden md:block">About us</li>
           </Link>
+          {/* <Link to="/add">
+            <li className="hidden md:block">Add</li>
+          </Link> */}
+
         </ul>
       </div>
       <div>
         <ul className="flex justify-between cursor-pointer gap-10 items-center r  text-lg py-4">
+
           {currentUser.category === "donor" && (
             <Link to="/post">
               <li className="" value="">
@@ -60,12 +80,34 @@ function Nav() {
           </Link>
 
           <Link to="/login">
+
+          {/* <Link to="/post">
+            <li className="" value="">
+              Postschorlarship
+            </li>
+          </Link> */}
+          {login ? (
+
             <li>
               <button className="border-2  border-black  py-2 px-6  rounded-full">
-                Log in
+                Log out
               </button>
             </li>
-          </Link>
+          ) : (
+            <>
+              <Link to="/signup">
+                <li>sign up</li>
+              </Link>
+
+              <Link to="/login">
+                <li>
+                  <button className="border-2  border-black  py-2 px-6  rounded-full">
+                    Log in
+                  </button>
+                </li>
+              </Link>
+            </>
+          )}
 
           <li className="block md:hidden ">
             <FaBars size={25} />

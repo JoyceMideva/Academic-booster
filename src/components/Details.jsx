@@ -1,10 +1,13 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 
 import login from "../assets/images/login.jpeg";
 import { useState, useEffect, useRef, useContext } from "react";
 import { StateContext } from "../context/State";
 import { useNavigate } from "react-router";
+
 import { Link } from "react-router-dom";
+
+import { StateContext } from "../context/State";
 
 function Details() {
   const {currentUser, setCurrentUser} = useContext(StateContext);
@@ -12,7 +15,7 @@ function Details() {
     emailRef.current.focus();
   }, []);
   const auth = getAuth();
-
+  const {login,setLogin}=useState(StateContext)
   const [formErrors, setFormErrors] = useState({});
   const emailRef = useRef();
   const [loginError, setLoginError] = useState("");
@@ -50,6 +53,14 @@ function Details() {
         setLoginError(errorMsg);
         console.log(error)
       });
+
+
+      onAuthStateChanged(auth,(user)=>{
+        localStorage.setItem("user", JSON.stringify( user))
+        console.log(user)
+        setLogin(true)
+
+      })
 
     // console.log(errors);
   }

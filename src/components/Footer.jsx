@@ -3,18 +3,20 @@ import instagram from "../assets/images/instagram.jpg";
 import facebook from "../assets/images/facebook.jpg";
 import call from "../assets/images/call.png";
 import { FaEnvelope,FaPhoneAlt } from "react-icons/fa";
+import mpesa from "../assets/images/M-PESA.webp"
 function Footer() {
   return (
     <div className="  text-lg bg-slate-300 ">
       <div className="flex flex-col ">
-      <button className=" sm:px-6 border-2 py-4 px-12  bg-[#3871C1] rounded-full font-bold text-[#fff] text-xl w-[15%] mx-auto capitalize">Donate</button>
-      <h1 className="font-bold text-2xl text-[#34BAED] text-center">
+      <h1 className="font-bold text-2xl pt-2 text-[#34BAED] text-center">
         Donate & Keep The site Running
       </h1>
+      <img className="mx-auto" src={mpesa} width={100}/>
+      <p className="text-center">0790433762</p>
       </div>
       <h4 className="text-center">Contact us</h4>
       <div className="flex items-center justify-center gap-3 flex-col ">
-        <div className="flex gap-3 items-center justify-center">
+        <div className="flex gap-3 pt-2 items-center justify-center">
       <FaPhoneAlt/>
       <p>+254796388487</p>
       </div>
@@ -24,10 +26,10 @@ function Footer() {
       </div>
       </div>
       <div className="flex items-center py-3 gap-5 justify-center">
-        <img src={twitter} width={50} alt="" srcset="" />
-        <img src={instagram} width={50} alt="" srcset="" />
-        <img src={facebook} width={50} alt="" srcset="" />
-        <img src={call} width={50} alt="" srcset="" />
+        <img src={twitter} width={20} alt="" srcset="" />
+        <img src={instagram} width={20} alt="" srcset="" />
+        <img src={facebook} width={20} alt="" srcset="" />
+        <img src={call} width={20} alt="" srcset="" />
       </div>
     </div>
   );
