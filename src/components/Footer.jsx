@@ -16,7 +16,7 @@ function Footer() {
       </div>
       <h4 className="text-center">Contact us</h4>
       <div className="flex items-center justify-center gap-3 flex-col ">
-        <div className="flex gap-3 items-center justify-center">
+        <div className="flex gap-3 pt-2 items-center justify-center">
       <FaPhoneAlt/>
       <p>+254796388487</p>
       </div>
@@ -26,10 +26,10 @@ function Footer() {
       </div>
       </div>
       <div className="flex items-center py-3 gap-5 justify-center">
-        <img src={twitter} width={50} alt="" srcset="" />
-        <img src={instagram} width={50} alt="" srcset="" />
-        <img src={facebook} width={50} alt="" srcset="" />
-        <img src={call} width={50} alt="" srcset="" />
+        <img src={twitter} width={20} alt="" srcset="" />
+        <img src={instagram} width={20} alt="" srcset="" />
+        <img src={facebook} width={20} alt="" srcset="" />
+        <img src={call} width={20} alt="" srcset="" />
       </div>
     </div>
   );
