@@ -1,40 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import logo1 from "../assets/images/logo1.png";
-
-import { useEffect, useContext } from "react";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import { StateContext } from "../context/State";
-import { db } from "../firebase";
-
-function Nav() {
-  const { user, setUser, currentUser, setCurrentUser } =
-    useContext(StateContext);
-
-  useEffect(() => {
-    setUser();
-
-    (async function () {
-      const q = query(
-        collection(db, "users"),
-        where("email", "==", JSON.parse(localStorage.getItem("user")))
-      );
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        setCurrentUser(doc.data());
-        console.log(doc.data());
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-      });
-    })();
-  }, []);
-
 import { useContext, useEffect, useState } from "react";
 import { StateContext } from "../context/State";
 function Nav() {
   // const {islogin} = useState(StateContext);
   // const [login, setLogin]=islogin
-  const { login,setLogin} = useContext(StateContext);
+  const { login, setLogin } = useContext(StateContext);
+  const navigate=useNavigate()
+const handleLogout=()=>{
+  localStorage.removeItem("user")
+  location.reload()
+  navigate("/")
+}
   useEffect(() => {
     let userData = localStorage.getItem("user");
     if (userData) {
@@ -45,7 +23,6 @@ function Nav() {
   return (
     <div className="container mx-auto  flex justify-between items-center capitalize">
       <div className="">
-        {console.log(currentUser)}
         <ul className=" flex justify-between gap-10 items-center cursor-pointer   text-lg py-4">
           <Link to="/">
             <li>
@@ -58,38 +35,15 @@ function Nav() {
           <Link to="/aboutus">
             <li className="hidden md:block">About us</li>
           </Link>
-          {/* <Link to="/add">
-            <li className="hidden md:block">Add</li>
-          </Link> */}
-
+         
         </ul>
       </div>
       <div>
         <ul className="flex justify-between cursor-pointer gap-10 items-center r  text-lg py-4">
-
-          {currentUser.category === "donor" && (
-            <Link to="/post">
-              <li className="" value="">
-                Postschorlarship
-              </li>
-            </Link>
-          )}
-
-          <Link to="/signup">
-            <li>sign up</li>
-          </Link>
-
-          <Link to="/login">
-
-          {/* <Link to="/post">
-            <li className="" value="">
-              Postschorlarship
-            </li>
-          </Link> */}
+          
           {login ? (
-
             <li>
-              <button className="border-2  border-black  py-2 px-6  rounded-full">
+              <button onClick={handleLogout} className="border-2  border-black  py-2 px-6  rounded-full">
                 Log out
               </button>
             </li>
