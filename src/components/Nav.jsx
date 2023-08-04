@@ -10,8 +10,8 @@ function Nav() {
   const navigate=useNavigate()
 const handleLogout=()=>{
   localStorage.removeItem("user")
-  location.reload()
   navigate("/")
+  location.reload()
 }
   useEffect(() => {
     let userData = localStorage.getItem("user");
@@ -42,11 +42,20 @@ const handleLogout=()=>{
         <ul className="flex justify-between cursor-pointer gap-10 items-center r  text-lg py-4">
           
           {login ? (
+            <>
+            <Link to="/post">
+            <li>
+            <button className="border-2 text-[#3871c1] border-black  py-2 px-6  rounded-full">
+              post Scholarship
+            </button>
+          </li>
+          </Link>
             <li>
               <button onClick={handleLogout} className="border-2  border-black  py-2 px-6  rounded-full">
                 Log out
               </button>
             </li>
+            </>
           ) : (
             <>
               <Link to="/signup">
