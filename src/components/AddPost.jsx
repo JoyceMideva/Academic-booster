@@ -12,6 +12,7 @@ function AddPost() {
   const [loader, setLoader] = useState(true);
   const [base64File, setBase64File] = useState(null);
   const db = getFirestore(app);
+  
 
   const handleChange = (e) => {
     setFormField({ ...formField, [e.target.name]: e.target.value });

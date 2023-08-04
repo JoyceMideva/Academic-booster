@@ -1,16 +1,14 @@
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-
-import login from "../assets/images/login.jpeg";
-import { useState, useEffect, useRef, useContext } from "react";
-import { StateContext } from "../context/State";
+import { useState, useEffect, useRef,useContext } from "react";
 import { useNavigate } from "react-router";
-
-import { Link } from "react-router-dom";
-
 import { StateContext } from "../context/State";
+import { Link } from "react-router-dom";
 
 function Details() {
   const {currentUser, setCurrentUser} = useContext(StateContext);
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
   useEffect(() => {
     emailRef.current.focus();
   }, []);
@@ -20,7 +18,6 @@ function Details() {
   const emailRef = useRef();
   const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
-  const movep=useNavigate()
   const [formData, setFormData] = useState({});
 
   function handleLogin(e) {
@@ -36,17 +33,13 @@ function Details() {
     signInWithEmailAndPassword(auth, formData.email, formData.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        setCurrentUser(user);
         console.log(user.email);
-        localStorage.setItem("user",(JSON.stringify(user.email)))
         setFormData({
           email: "",
           password: "",
         });
-
         setLoginError("");
-        movep("/post");
-        navigate("/add");
+        navigate("/");
       })
       .catch((error) => {
         const errorMsg = error.message.substring(22, error.message.length - 2);
@@ -71,12 +64,11 @@ function Details() {
     <div className="container mx-auto flex-1 ">
       <div className="flex ">
       <div className="flex-1 bg-cover bg-no-repeat bg-[url('assets/images/lgn.webp')] ">
-          {/* <img src={signup} /> */}
         </div>
         <div className="p-6 justify-center flex-1 bg-[#3871c1]">
           <div className="flex justify-center w-[100%] gap-3 my-6">
             <p className="text-2xl">Dont Have An Account Yet?</p>
-            <button className="text-white text-2xl">Sign Up</button>
+          <Link to="/signup">  <button className="text-white text-2xl">Sign Up</button></Link>
           </div>
           {loginError !== "" && (
             <p className="text-red-500 capitalize text-2xl text-center">{loginError}</p>
@@ -110,7 +102,7 @@ function Details() {
               />
             </div>
             <div className="my-16 flex justify-center">
-            <button
+              <button
                 onClick={(e) => handleLogin(e)}
                 className=" bg-white my-3 text-lg font-bold text-[#3871c1] py-4 px-2 w-[50%] rounded-full"
                 type="submit"
@@ -118,8 +110,6 @@ function Details() {
                 Login
               </button>
             </div>
-            
-
           </div>
         </div>
       </div>
